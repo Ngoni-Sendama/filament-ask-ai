@@ -1,5 +1,4 @@
 <?php
-
 namespace CodewithNgoni\FilamentAskAI;
 
 use Filament\Forms\Components\TextInput;
@@ -28,10 +27,9 @@ class FilamentAskAIServiceProvider extends ServiceProvider
             $component::macro('AskGemini', function (string $model = 'gemini-2.0-flash') {
                 return $this->askWithAI('gemini', $model);
             });
-           
         }
 
-        // Mixin the Askable trait
+        // Instead of mixin, directly apply the trait to each component's class
         TextInput::mixin(new Askable());
         Textarea::mixin(new Askable());
         RichEditor::mixin(new Askable());
