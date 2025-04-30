@@ -1,0 +1,31 @@
+{
+    "name": "codewithngoni/filament-ask-ai",
+    "description": "Adds AI-powered hint actions to Filament forms fields.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ngoni",
+            "email": "ngonidzashesendama@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CodewithNgoni\\FilamentAskAI\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CodewithNgoni\\FilamentAskAI\\FilamentAskAIServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "filament/forms": "^3.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
