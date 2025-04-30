@@ -3,7 +3,7 @@
 **Filament Ask AI is a Laravel package that adds AI-powered hint actions to Filament form fields. It integrates with AI models (like Mistral, Gemini, and Claude) to provide a "hint action" in your form fields, allowing users to interact with AI directly within your Laravel Filament forms.**
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/codewithngoni/filament-ask-ai)](https://packagist.org/packages/codewithngoni/filament-ask-ai)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/Ngoni-Sendama/filament-ask-ai/Tests)](https://github.com/Ngoni-Sendama/filament-ask-ai/actions)
+
 [![Total Downloads](https://img.shields.io/packagist/dt/codewithngoni/filament-ask-ai)](https://packagist.org/packages/codewithngoni/filament-ask-ai)
 
 ## Installation
