@@ -10,7 +10,6 @@ return [
     'keys' => [
         'mistral' => env('MISTRAL_API_KEY'),
         'gemini'  => env('GEMINI_API_KEY'),
-        'claude'  => env('CLAUDE_API_KEY'),
     ],
 
 ];

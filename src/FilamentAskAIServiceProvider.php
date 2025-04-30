@@ -11,18 +11,16 @@ use Illuminate\Support\ServiceProvider;
 use CodewithNgoni\FilamentAskAI\Traits\Askable;
 use Filament\Notifications\Notification;
 
-
 class FilamentAskAIServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // publish config
+        // Publish config
         $this->publishes([
             __DIR__ . '/Config/filament-ask-ai.php' => config_path('filament-ask-ai.php'),
         ], 'filament-ask-ai-config');
-        
 
-        // register macros
+        // Register macros
         foreach ([TextInput::class, Textarea::class, RichEditor::class, MarkdownEditor::class] as $component) {
             $component::macro('AskMistral', function (string $model = 'mistral-large-latest') {
                 return $this->askWithAI('mistral', $model);
@@ -30,15 +28,14 @@ class FilamentAskAIServiceProvider extends ServiceProvider
             $component::macro('AskGemini', function (string $model = 'gemini-2.0-flash') {
                 return $this->askWithAI('gemini', $model);
             });
-            $component::macro('AskClaude', function (string $model = 'claude-2') {
-                return $this->askWithAI('claude', $model);
-            });
+           
         }
 
-        TextInput::mixin(Askable::class);
-        Textarea::mixin(Askable::class);
-        RichEditor::mixin(Askable::class);
-        MarkdownEditor::mixin(Askable::class);
+        // Mixin the Askable trait
+        TextInput::mixin(new Askable());
+        Textarea::mixin(new Askable());
+        RichEditor::mixin(new Askable());
+        MarkdownEditor::mixin(new Askable());
     }
 
     public function register()
@@ -49,7 +46,7 @@ class FilamentAskAIServiceProvider extends ServiceProvider
         );
 
         // Notify missing API keys
-        foreach (['mistral', 'gemini', 'claude'] as $provider) {
+        foreach (['mistral', 'gemini'] as $provider) {
             $key = config("filament-ask-ai.keys.{$provider}");
             if (empty($key)) {
                 Notification::make()
@@ -57,7 +54,6 @@ class FilamentAskAIServiceProvider extends ServiceProvider
                     ->warning()
                     ->send();
             }
-            
         }
     }
 }
